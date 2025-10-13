@@ -2,3 +2,36 @@
 h3 {
   font-family: Bricolage Grotesque Bold;
 }
+.header {
+  margin: 0px;
+  padding: 0px;
+}
+.header__nav-logo-img {
+  width: 150px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.header__main-txt {
+  font-size: 50px;
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+}
+.header__units-btn {
+  background-color: #1e2740;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: white;
+}
+
+.header__units-arrowdown {
+  padding-left: 5px;
+}
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: white;
+}

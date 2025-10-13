@@ -2,9 +2,12 @@ import { useState } from "react";
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
 
+  const handleOnSearch = () => {};
+
   return (
-    <section role="search">
+    <section role="search" className="search">
       <input
+        className="search__input"
         type="text"
         name="search"
         id="search"
@@ -14,7 +17,7 @@ function SearchBar() {
           setSearchInput(value);
         }}
       />
-      <button>Search</button>
+      <button className="search__btnß">Search</button>
     </section>
   );
 }
