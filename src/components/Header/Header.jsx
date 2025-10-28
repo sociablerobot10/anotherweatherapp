@@ -6,13 +6,22 @@ import ArrowDown from "../../assets/icon-dropdown.svg";
 import GearIcon from "../../assets/icon-units.svg";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  function openDropDown() {
+    setIsMenuOpen(true);
+  }
   return (
     <header className="header">
       <nav className="header__nav">
         <div className="header__nav-logo">
           <img className="header__nav-logo-img" src={Logo} />
         </div>
-        <button className="header__units-btn">
+        {isMenuOpen && <DropdownMenu />}
+        <button
+          onClick={() => {
+            openDropDown();
+          }}
+          className="header__units-btn"
+        >
           <img className="header__units-gear" src={GearIcon} /> Units
           <img className="header__units-arrowdown" src={ArrowDown} />
         </button>

@@ -1,0 +1,26 @@
+.dropdownmenu__temp-heading,
+.dropdownmenu__windspeed-heading,
+.dropdownmenu__precip-heading {
+  color: #cbd0da;
+  font-size: 14px;
+  font-weight: 400;
+}
+.dropdownmenu__windspeed-heading {
+  background-color: none;
+  border: none;
+}
+.dropdownmenu__temp-group,
+.dropdownmenu__windspeed-group,
+.dropdownmenu__precip-group {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+input[type="radio"] {
+  display: none;
+  padding-bottom: 10px;
+}
+.dropdownmenu__precip-label,
+.dropdownmenu__windspeed-label {
+  margin-bottom: 10px;
+}

@@ -1,17 +1,64 @@
+import "./DropdownMenu.css";
+
 function DropdownMenu() {
   return (
     <>
-      <div className="dropdownmenu">
+      <form className="dropdownmenu">
         <div className="dropdownmenu__temp">
-          <label>Temperature</label>
-          <label className="dropdownmenu__temp-label">Temperature</label>
-          <button className="dropdownmenu__temp-option">Celcius </button>
-          <button className="dropdownmenu__temp-option">fahrenheit </button>
+          <fieldset className="dropdownmenu__temp-group">
+            <legend className="dropdownmenu__temp-heading">Temperature</legend>
+            <label>
+              Celsius (°C)
+              <input type="radio" name="temperature" value="celsius" />
+            </label>
+            <label>
+              Fahrenheit (°F)
+              <input type="radio" name="temperature" value="fahrenheit" />
+            </label>
+          </fieldset>
         </div>
-        <label className="dropdownmenu__temp">Wind Speed</label>
-        <button className="dropdownmenu__temp-option">km/h </button>
-        <button className="dropdownmenu__temp-option">mph </button>
-      </div>
+        <div className="dropdownmenu__windspeed">
+          <fieldset className="dropdownmenu__windspeed-group">
+            <legend className="dropdownmenu__windspeed-heading">
+              Wind Speed
+            </legend>
+            <label className="dropdownmenu__windspeed-label">
+              km/h
+              <input type="radio" name="windSpeed" value="kmh" />
+            </label>
+            <label className="dropdownmenu__windspeed-label">
+              mph
+              <input type="radio" name="windSpeed" value="mph" />
+            </label>
+          </fieldset>
+        </div>
+        <div className="dropdownmenu__precip">
+          <fieldset className="dropdownmenu__precip-group">
+            <legend className="dropdownmenu__precip-heading">
+              Precipitation
+            </legend>
+            <label className="dropdownmenu__precip-label">
+              {" "}
+              Millimeters(mm)
+              <input
+                type="radio"
+                name="precip"
+                value="millimeters"
+                className="dropdownmenu__precip-option"
+              />
+            </label>
+            <label className="dropdownmenu__precip-label">
+              <input
+                type="radio"
+                name="precip"
+                value="inches"
+                className="dropdownmenu__precip-option"
+              />
+              Inches (in)
+            </label>
+          </fieldset>
+        </div>
+      </form>
     </>
   );
 }

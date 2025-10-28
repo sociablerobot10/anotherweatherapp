@@ -24,10 +24,14 @@ h3 {
   border-radius: 10px;
   padding: 10px 15px;
   color: white;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
 }
-
 .header__units-arrowdown {
-  padding-left: 5px;
+  align-self: center;
+  margin-bottom: 2px;
 }
 .header__nav {
   display: flex;

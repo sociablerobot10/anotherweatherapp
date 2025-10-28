@@ -1,5 +1,26 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts.css);
+
+:root {
+  --c-blue-500: hsl(233, 67%, 56%);
+  --c-blue-700: hsl(248, 70%, 36%);
+  --c-orange-500: hsl(28, 100%, 52%);
+  --n--900: hsl(243, 96%, 9%);
+  --n-800: hsl(243, 27%, 20%);
+  --n-700: hsl(243, 23%, 24%);
+  --n-600: hsl(243, 23%, 30%);
+  --n-300: hsl(240, 6%, 70%);
+  --n-200: hsl(250, 6%, 84%);
+  --n-0: hsl(0, 0%, 100%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "DM Sans";
+}
+
 body {
   background-color: hsl(243, 96%, 9%);
 }

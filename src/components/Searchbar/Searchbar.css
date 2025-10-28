@@ -1,5 +1,24 @@
-.search__input {
+.search {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  min-height: 5rem;
 }
+.search > * {
+  color: white;
+  border-radius: 1rem;
+  border: 0;
+}
+.search__input {
+  padding: 1rem;
+  background-color: var(--n-600);
+}
+
 .search__btn {
-  background-color: var(--c-blue-700);
+  background-color: var(--c-blue-500);
+  padding: 1rem;
+}
+
+.search__btn:hover {
+  cursor: pointer;
 }
