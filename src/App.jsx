@@ -4,12 +4,15 @@ import viteLogo from "/vite.svg";
 
 import Header from "./components/Header/Header";
 import SearchBar from "./components/SearchBar/SearchBar";
+import WeatherProvider from "./context/WeatherProvider";
 function App() {
   return (
     <>
       <div>
-        <Header />
-        <SearchBar />
+        <WeatherProvider>
+          <Header />
+          <SearchBar />
+        </WeatherProvider>
       </div>
     </>
   );

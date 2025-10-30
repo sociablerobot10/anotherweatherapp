@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { fetchWeatherApi } from "openmeteo";
+// import { fetchWeatherApi } from "openmeteo";
 
 /**
  * WeatherContext that holds the results of the weather API
@@ -9,7 +9,6 @@ import { fetchWeatherApi } from "openmeteo";
  * - We can use the Geocoding API section of Open-Metero to search a city and receive back a longtitude and latitude.
  *
  */
-import { fetchWeatherApi } from "openmeteo";
 
 const WeatherContext = createContext();
 
@@ -23,7 +22,9 @@ async function searchCords(place) {
   try {
     const response = await fetch(url, { method: "GET" });
     console.log(response);
-    const locations_data = await response.json().data;
+    const locations_data = await response.json();
+    console.log("location", locations_data);
+    return locations_data;
   } catch (error) {
     console.error(error.message);
   }
@@ -47,5 +48,8 @@ async function searchWeatherApi(searchInput) {
 export default function WeatherProvider({ children }) {
   return <WeatherContext.Provider>{children}</WeatherContext.Provider>;
 }
+
+searchCords("Berlin");
+console.log("hello");
 
 export { WeatherContext };
