@@ -33,18 +33,29 @@ async function searchWeatherApi(location) {
     latitude: location.latitude,
     longitude: location.longitude,
     daily: ["weather_code", "temperature_2m_max", "temperature_2m_min"],
-    hourly: "temperature_2m",
-    current: ["temperature_2m", "relative_humidity_2m", "apparent_temperature"],
+
+    hourly: [
+      "temperature_2m",
+      "relative_humidity_2m",
+      "apparent_temperature",
+      "rain",
+      "showers",
+      "snowfall",
+      "weather_code",
+    ],
   };
   try {
     const url = "https://api.open-meteo.com/v1/forecast";
     const response = await fetchWeatherApi(url, params); // returns an array of weatherapiresponse.
-    console.log(response[0]);
+    console.log("response", response);
+    return response[0];
   } catch (error) {
     console.error(error);
   }
 }
 
-// const location = await searchCords("Oakland");
+const location = await searchCords("Oakland");
 
-// const weather = await searchWeatherApi(location[0]);
+const weather = await searchWeatherApi(location[0]);
+// needs to convert the hourly() to readable, look at docs how they do it.
+console.log(weather.hourly());

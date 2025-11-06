@@ -1,5 +1,5 @@
-import { createContext } from "react";
-// import { fetchWeatherApi } from "openmeteo";
+import { createContext, useState } from "react";
+import * as WeatherAPI from "src/utils/weatherAPI.js";
 
 /**
  * WeatherContext that holds the results of the weather API
@@ -10,7 +10,15 @@ import { createContext } from "react";
  *
  */
 
+const [weatherInfo, setWeatherInfo] = useState({});
+
 const WeatherContext = createContext();
+
+const searchWeather = async (location) => {
+  const result = await WeatherAPI.searchWeather(location);
+  
+  console.log("results", result);
+};
 
 export default function WeatherProvider({ children }) {
   return <WeatherContext.Provider>{children}</WeatherContext.Provider>;

@@ -3,8 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
 import Header from "./components/Header/Header";
-import SearchBar from "./components/Search/SearchBar/SearchBar.jsx";
-import WeatherProvider from "./context/WeatherProvider.jsx";
+import WeatherProvider from "src/context/WeatherProvider.jsx";
+import SearchBar from "src/components/Search/SearchBar/SearchBar.jsx";
 
 function App() {
   return (
