@@ -10,7 +10,7 @@ import { createContext } from "react";
  *
  */
 
-const WeatherContext = createContext();
+export const WeatherContext = createContext();
 
 async function searchCords(place) {
   const params = {
@@ -45,11 +45,11 @@ async function searchWeatherApi(searchInput) {
   const responses = await fetchWeatherApi(url, params);
 }
 
-export default function WeatherProvider({ children }) {
-  return <WeatherContext.Provider>{children}</WeatherContext.Provider>;
+export function WeatherProvider({ children, value }) {
+  return (
+    <WeatherContext.Provider value={value}>{children}</WeatherContext.Provider>
+  );
 }
 
 searchCords("Berlin");
 console.log("hello");
-
-export { WeatherContext };

@@ -1,0 +1,9 @@
+{
+  "$schema": "./schemas/jsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["./src/*"]
+    }
+  }
+}

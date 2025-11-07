@@ -28,14 +28,19 @@ h3 {
   align-items: center;
   gap: 4px;
   border: none;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 .header__units-arrowdown {
   align-self: center;
   margin-bottom: 2px;
 }
 .header__nav {
-  display: flex;
-  justify-content: space-between;
   padding: 10px;
   color: white;
+  position: relative;
+}
+.container {
+  display: flex;
+  justify-content: space-around;
 }

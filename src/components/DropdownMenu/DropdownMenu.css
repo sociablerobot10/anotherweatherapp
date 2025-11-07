@@ -1,3 +1,13 @@
+.dropdownmenu {
+  background-color: #25253d;
+  padding-top: 15px;
+  border-radius: 10%;
+  width: calc(100% - 160px);
+  margin-top: 10px;
+  position: absolute;
+  right: 10px;
+}
+
 .dropdownmenu__temp-heading,
 .dropdownmenu__windspeed-heading,
 .dropdownmenu__precip-heading {
@@ -17,8 +27,9 @@
   border: none;
 }
 input[type="radio"] {
-  display: none;
+  padding-left: 100px;
   padding-bottom: 10px;
+  display: none;
 }
 .dropdownmenu__precip-label,
 .dropdownmenu__windspeed-label {

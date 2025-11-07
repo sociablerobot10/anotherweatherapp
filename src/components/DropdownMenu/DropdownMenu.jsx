@@ -1,6 +1,10 @@
 import "./DropdownMenu.css";
-
+import { useContext } from "react";
+import { WeatherContext } from "../../context/WeatherProvider";
 function DropdownMenu() {
+  const { temperatureUnit, updateTempUnit } = useContext(WeatherContext);
+  //make a function later
+  console.log(temperatureUnit);
   return (
     <>
       <form className="dropdownmenu">
@@ -9,11 +13,25 @@ function DropdownMenu() {
             <legend className="dropdownmenu__temp-heading">Temperature</legend>
             <label>
               Celsius (°C)
-              <input type="radio" name="temperature" value="celsius" />
+              <input
+                onChange={(e) => {
+                  updateTempUnit(e.target.value);
+                }}
+                type="radio"
+                name="temperature"
+                value="°C"
+              />
             </label>
             <label>
               Fahrenheit (°F)
-              <input type="radio" name="temperature" value="fahrenheit" />
+              <input
+                onChange={(e) => {
+                  updateTempUnit(e.target.value);
+                }}
+                type="radio"
+                name="temperature"
+                value="°F"
+              />
             </label>
           </fieldset>
         </div>
@@ -48,13 +66,13 @@ function DropdownMenu() {
               />
             </label>
             <label className="dropdownmenu__precip-label">
+              Inches (in)
               <input
                 type="radio"
                 name="precip"
                 value="inches"
                 className="dropdownmenu__precip-option"
               />
-              Inches (in)
             </label>
           </fieldset>
         </div>
