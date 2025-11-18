@@ -1,9 +1,21 @@
 import { useState } from "react";
 import "./SearchBar.css";
-function SearchBar() {
+import * as WeatherAPI from "src/utils/weatherAPI.js";
+/**
+ * TODO:
+ * - Handle case when searchInput is empty. Warn the user
+ * - Handle case where they typed a weird place name (ex. 34jsdjfas)
+ *
+ */
+function SearchBar({ setIsLoading, setSearchResults }) {
   const [searchInput, setSearchInput] = useState("");
 
-  const handleOnSearch = () => {};
+  const handleOnSearch = async () => {
+    setIsLoading(true);
+    const locations = await WeatherAPI.searchCoords(searchInput);
+    setIsLoading(false);
+    setSearchResults(locations);
+  };
 
   return (
     <section role="search" className="search">
@@ -18,7 +30,9 @@ function SearchBar() {
           setSearchInput(value);
         }}
       />
-      <button className="search__btn">Search</button>
+      <button className="search__btn" onClick={handleOnSearch}>
+        Search
+      </button>
     </section>
   );
 }

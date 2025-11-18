@@ -10,18 +10,23 @@ import * as WeatherAPI from "src/utils/weatherAPI.js";
  *
  */
 
-const [weatherInfo, setWeatherInfo] = useState({});
-
 const WeatherContext = createContext();
 
 const searchWeather = async (location) => {
   const result = await WeatherAPI.searchWeather(location);
-  
+
   console.log("results", result);
 };
 
+const updateUnits = (unitInfo) => {
+  // make another api call with updated units
+};
+
 export default function WeatherProvider({ children }) {
-  return <WeatherContext.Provider>{children}</WeatherContext.Provider>;
+  const [weatherInfo, setWeatherInfo] = useState({});
+  return (
+    <WeatherContext.Provider value={""}>{children}</WeatherContext.Provider>
+  );
 }
 
-export { WeatherContext };
+export { WeatherContext, updateUnits };

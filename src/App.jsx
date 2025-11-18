@@ -1,10 +1,8 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-
 import Header from "./components/Header/Header";
 import WeatherProvider from "src/context/WeatherProvider.jsx";
 import SearchBar from "src/components/Search/SearchBar/SearchBar.jsx";
+import { SearchResults } from "./components/Search/SearchResults/SearchResults.jsx";
+import { Search } from "./components/Search/Search.jsx";
 
 function App() {
   return (
@@ -12,7 +10,7 @@ function App() {
       <div>
         <WeatherProvider>
           <Header />
-          <SearchBar />
+          <Search />
         </WeatherProvider>
       </div>
     </>
