@@ -3,15 +3,25 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
 import Header from "./components/Header/Header";
-// import SearchBar from "./components/Search/SearchBar/SearchBar";
-
-import { WeatherProvider } from "./context/WeatherProvider";
+import Search from "src/components/Search/Search";
+import {
+  WeatherProvider,
+  TEMP_UNITS,
+  WIND_UNITS,
+  PRECIP_UNITS,
+} from "./context/WeatherProvider";
 function App() {
-  const [temperatureUnit, setTemperatureUnit] = useState("°C");
-  const [windSpeedUnit, setWindSpeedUnit] = useState("km/h");
-  const [precipitationUnit, setPrecipitationUnit] = useState("Millimeters");
+  const [temperatureUnit, setTemperatureUnit] = useState(TEMP_UNITS.CELSIUS);
+  const [windSpeedUnit, setWindSpeedUnit] = useState(WIND_UNITS.KMH);
+  const [precipitationUnit, setPrecipitationUnit] = useState(PRECIP_UNITS.MM);
   function updateTempUnit(unit) {
     setTemperatureUnit(unit);
+  }
+  function updateWindSpeedUnit(unit) {
+    setWindSpeedUnit(unit);
+  }
+  function updatePrecipitationUnit(unit) {
+    setPrecipitationUnit(unit);
   }
   return (
     <>
@@ -22,10 +32,12 @@ function App() {
             windSpeedUnit,
             precipitationUnit,
             updateTempUnit,
+            updateWindSpeedUnit,
+            updatePrecipitationUnit,
           }}
         >
           <Header />
-          {/* <SearchBar /> */}
+          <Search />
         </WeatherProvider>
       </div>
     </>

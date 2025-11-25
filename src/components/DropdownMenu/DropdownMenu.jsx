@@ -2,35 +2,49 @@ import "./DropdownMenu.css";
 import { useContext } from "react";
 import { WeatherContext } from "../../context/WeatherProvider";
 function DropdownMenu() {
-  const { temperatureUnit, updateTempUnit } = useContext(WeatherContext);
+  const {
+    temperatureUnit,
+    updateTempUnit,
+    windSpeedUnit,
+    updatePrecipitationUnit,
+    precipitationUnit,
+    updateWindSpeedUnit,
+    TEMP_UNITS,
+    WIND_UNITS,
+    PRECIP_UNITS,
+  } = useContext(WeatherContext);
+
   //make a function later
-  console.log(temperatureUnit);
+
   return (
     <>
       <form className="dropdownmenu">
         <div className="dropdownmenu__temp">
           <fieldset className="dropdownmenu__temp-group">
             <legend className="dropdownmenu__temp-heading">Temperature</legend>
-            <label>
+            <label for={TEMP_UNITS.CELSIUS}>
               Celsius (°C)
               <input
+                id="celsius"
                 onChange={(e) => {
                   updateTempUnit(e.target.value);
                 }}
                 type="radio"
                 name="temperature"
-                value="°C"
+                value={TEMP_UNITS.CELSIUS}
               />
             </label>
-            <label>
+
+            <label for={TEMP_UNITS.FAHRENHEIT}>
               Fahrenheit (°F)
               <input
+                id="f"
                 onChange={(e) => {
                   updateTempUnit(e.target.value);
                 }}
                 type="radio"
                 name="temperature"
-                value="°F"
+                value={TEMP_UNITS.FAHRENHEIT}
               />
             </label>
           </fieldset>
@@ -40,13 +54,29 @@ function DropdownMenu() {
             <legend className="dropdownmenu__windspeed-heading">
               Wind Speed
             </legend>
-            <label className="dropdownmenu__windspeed-label">
+            <label for="km/h" className="dropdownmenu__windspeed-label">
               km/h
-              <input type="radio" name="windSpeed" value="kmh" />
+              <input
+                onChange={(e) => {
+                  updateWindSpeedUnit(e.target.value);
+                }}
+                type="radio"
+                name="windSpeed"
+                value="km/h"
+                id="km/h"
+              />
             </label>
-            <label className="dropdownmenu__windspeed-label">
+            <label for="mph" className="dropdownmenu__windspeed-label">
               mph
-              <input type="radio" name="windSpeed" value="mph" />
+              <input
+                onChange={(e) => {
+                  updateWindSpeedUnit(e.target.value);
+                }}
+                type="radio"
+                id="mph"
+                name="windSpeed"
+                value="mph"
+              />
             </label>
           </fieldset>
         </div>
@@ -55,7 +85,17 @@ function DropdownMenu() {
             <legend className="dropdownmenu__precip-heading">
               Precipitation
             </legend>
-            <label className="dropdownmenu__precip-label">
+            <label
+              for="mm"
+              onChange={(e) => {
+                updatePrecipitationUnit(e.target.value);
+              }}
+              type="radio"
+              id="mm"
+              name="precip"
+              value="mm"
+              className="dropdownmenu__precip-label"
+            >
               {" "}
               Millimeters(mm)
               <input

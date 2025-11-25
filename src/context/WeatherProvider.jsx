@@ -1,5 +1,5 @@
-import { createContext } from "react";
-// import { fetchWeatherApi } from "openmeteo";
+import { createContext, useState } from "react";
+import * as weatherAPI from "src/utils/weatherAPI";
 
 /**
  * WeatherContext that holds the results of the weather API
@@ -11,45 +11,34 @@ import { createContext } from "react";
  */
 
 export const WeatherContext = createContext();
-
-async function searchCords(place) {
-  const params = {
-    name: place,
-    count: 5,
-  };
-  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${params.name}&count=${params.count}`;
-
-  try {
-    const response = await fetch(url, { method: "GET" });
-    console.log(response);
-    const locations_data = await response.json();
-    console.log("location", locations_data);
-    return locations_data;
-  } catch (error) {
-    console.error(error.message);
-  }
-}
-
-async function searchWeatherApi(searchInput) {
-  // sample code for now
-  const params = {
-    latitude: 52.52,
-    longitude: 13.41,
-    daily: ["weather_code", "temperature_2m_max", "temperature_2m_min"],
-    hourly: "temperature_2m",
-    current: ["temperature_2m", "relative_humidity_2m", "apparent_temperature"],
-    bounding_box: "-90,-180,90,180",
-  };
-
-  const url = "https://api.open-meteo.com/v1/forecast";
-  const responses = await fetchWeatherApi(url, params);
-}
+export const TEMP_UNITS = { CELSIUS: "°C", FAHRENHEIT: "°F" };
+export const WIND_UNITS = { KMH: "km/h", MPH: "mph" };
+export const PRECIP_UNITS = { MM: "mm", INCHES: "inches" };
 
 export function WeatherProvider({ children, value }) {
+  const [weatherInfo, setWeatherInfo] = useState({});
+  const [tempUnit, setTempUnit] = useState(TEMP_UNITS.CELSIUS);
+  const [windUnit, setWindUnit] = useState(WIND_UNITS.KMH);
+  const [precipUnit, setPrecipUnit] = useState(PRECIP_UNITS.MM);
+
+  const searchCoords = async (place) => {
+    const locations = await weatherAPI.searchCoords(place);
+    return locations;
+  };
+
+  const searchWeather = async (location) => {
+    const info = await weatherAPI.searchWeatherApi(location, "celsius"); // Change later
+    setWeatherInfo(info);
+    console.log(info);
+  };
+
+  const values = {
+    searchCoords,
+    searchWeather,
+  };
   return (
-    <WeatherContext.Provider value={value}>{children}</WeatherContext.Provider>
+    <WeatherContext.Provider value={values}>{children}</WeatherContext.Provider>
   );
 }
 
-searchCords("Berlin");
-console.log("hello");
+// searchCards("Berlin");
